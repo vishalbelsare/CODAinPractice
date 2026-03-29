@@ -157,4 +157,7 @@ For **chiPower()** function, see **chiPower_miniscript.R**
 
 **hierclust_within.R**: functions CONCORD() and hierclust_within() for clustering the categories within each variable
 
-**women.txt**: dataset of women working (Spanish data)
+**women.csv**: dataset of women working (Spanish data, including missing values)
+
+**simulated.txt**: artificial data set
+
