@@ -151,3 +151,10 @@ PLEASE REPORT ANY BUGS OR DIFFICULTIES WITH THE PACKAGE TO Michael Greenacre at 
 **SUBCO.R**: functions CONCORD() and SUBCO() for measuring subcompositional coherence
 
 For **chiPower()** function, see **chiPower_miniscript.R**
+
+ \
+  **ARTICLE:** ***"Bi-dendrograms for clustering the categories of a multivariate categorical data set"***, by Michael Greenacre and Maurizio Vichi (2026). 
+
+**hierclust_within.R**: functions CONCORD() and hierclust_within() for clustering the categories within each variable
+
+**women.txt**: dataset of women working (Spanish data)
