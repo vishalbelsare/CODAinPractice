@@ -1,0 +1,170 @@
+---
+title: "README_unsuper_subco()"
+author: "Marina Martinez Alvaro"
+date: "2026-07-29"
+output: html_document
+---
+
+# unsuper_subco()
+
+One of the main criticisms of compositional data expressed as relative abundances is their lack of subcompositional coherence, meaning that relative abundances change when data are re-normalized after removing or adding features, which can seriously compromise reproducibility across studies. The unsuper_subco() function was developed to assess subcompositional coherence in omics datasets expressed as relative abundances (or chi-square transformed relative abundances), and to determine whether subcompositional coherence is likely to be an issue when analysing these data.
+
+The function follows an unsupervised approach. It repeatedly generates random subcompositions from the original dataset by keeping only a subset of features and re-closing them to relative abundances (TSS normalization). Each subcomposition is then compared with the original dataset using several metrics that quantify subcompositional coherence.
+
+
+The function unsuper_subco() has the following arguments: 
+  data = non-negative matrix with samples in rows and features in columns, containing either counts or relative abundances (closed internally if necessary)
+  nsub         = number of subcompositions tested (default 100)
+  propsub      = proportion of the data used in subcomposition (default 1/3)
+  weight = if TRUE (default), features are sampled with probabilities proportional to their average relative abundance
+  chi = if TRUE, relative abundances are chi-square transformed (each feature is divided by the square root of its mean relative abundance), giving relatively more weight to low-abundance features. Coherence metrics are then reported for both relative abundances and chi-square transformed relative abundances (default FALSE).
+  seed         = seed for random number generator (subcompositions selected randomly)
+
+The function returns:
+
+$feature.coherence: a list containing three matrices of dimensions n subcompositions × number of features, with Lin's concordance coefficients (Lin, 1989), scaled concordance coefficients and Pearson correlations between feature values in the full composition (original data) and in each subcomposition. Metrics are only reported for subcompositions in which the feature is included.
+
+$feature.coherence$summary: a data frame containing the feature names, the number of subcompositions in which each feature was selected, and the average concordance, scaled concordance and Pearson correlation across those subcompositions. 
+
+$procr: a vector of length n subcompositions containing the Procrustes correlation between the geometry of the full composition (restricted to the selected features) and each subcomposition. 
+
+$concord.dist: a vector of length n subcompositions containing the scaled concordance between the vectors of pairwise Euclidean distances among features computed from the full composition and from each subcomposition. 
+
+$concord.cor: a vector of length n subcompositions containing the concordance between the vectors of pairwise Pearson correlations among features computed from the full composition and from each subcomposition. 
+
+$concord.cov: a vector of length n subcompositions containing the scaled concordance between the vectors of feature variances and pairwise feature covariances computed from the full composition and from each subcomposition.
+
+As rough practical guidelines, average feature-level scaled concordance above 0.90, Procrustes correlations above 0.99, and concordance metrics above 0.95 indicate that the dataset is safely subcompositionally coherent.
+
+## Load the function
+
+The function can be loaded directly from GitHub:
+
+```{r}
+
+source("https://raw.githubusercontent.com/michaelgreenacre/CODAinPractice/main/unsuper_subco.R")
+
+```
+
+```{r}
+
+# source("C:/Users/mamaral9/Dropbox/Colaborations/CompositionalMethods_MGreenacre/Zeroes/Subco/unsuper_subco.R")
+
+```
+
+## Load the data
+
+The input data should be a numeric matrix or data frame with samples in rows and omic features in columns. The function accepts either counts or relative abundances, as the data are closed internally. Features with zero values in all samples should be removed before running the analysis.
+
+An example dataset is provided in Rabbits_16S.txt. It contains 1,000 ASVs and 150 samples and corresponds to a subset of the faecal 16S dataset described in the paper. 
+
+```{r}
+
+data <- read.table(
+  "https://raw.githubusercontent.com/michaelgreenacre/CODAinPractice/main/Rabbits_16S.txt",
+  header = TRUE,
+  sep = "\t",
+  check.names = FALSE
+)
+```
+
+```{r}
+# # In my PC
+# data<-read.table(
+#   "C:/Users/mamaral9/Dropbox/Colaborations/CompositionalMethods_MGreenacre/Zeroes/Subco/Rabbits_16S.txt",
+#   header = TRUE,
+#   sep = "\t",
+#   check.names = FALSE)
+
+```
+
+
+## Example 1: subcompositional coherence of relative abundances
+
+
+```{r}
+
+result<-unsuper_subco(data,
+                      nsub = 100,
+                      propsub = 1/3,
+                      chi = FALSE)
+
+```
+
+## Output
+
+Print a summary of the subcompositional coherence analysis:
+
+```{r}
+
+print(result)
+
+```
+
+Explore the subcompositional coherence of individual omic features:
+
+```{r}
+
+# Coherence of one feature across the subcompositions in which it was selected
+result$feature.coherence$scaled_concordance[, "ASV11690"]
+
+# Average feature-level metrics across subcompositions
+hist(result$feature.coherence$summary$concordance, breaks = 100)
+summary(result$feature.coherence$summary$concordance)
+
+hist(result$feature.coherence$summary$scaled_concordance, breaks = 100)
+summary(result$feature.coherence$summary$scaled_concordance)
+
+hist(result$feature.coherence$summary$pearson_correlation, breaks = 100)
+summary(result$feature.coherence$summary$pearson_correlation)
+
+```
+
+Explore subcompositional coherence of pairwise relationships among features:
+
+```{r}
+
+hist(result$concord.dist, breaks = 50)
+# Scaled concordance of pairwise Euclidean distances among features
+
+hist(result$concord.cor, breaks = 50)
+# Concordance of pairwise Pearson correlations among features
+
+hist(result$concord.cov, breaks = 50)
+# Scaled concordance of feature variances and pairwise covariances
+```
+
+
+## Example 2: test subcompositional coherence in the raw compositional database and after applying chi-squared normalization
+
+
+```{r}
+
+result_chi <- unsuper_subco(
+  data,
+  nsub = 100,
+  propsub = 1/3,
+  chi = TRUE
+)
+
+```
+
+## Output
+
+In addition to the results described in Example 1, the output includes subcompositional coherence metrics computed after chi-square transformation of the relative abundances:
+
+```{r}
+
+print(result_chi)
+
+```
+
+
+## Citation
+
+If you use this function in your research, please cite:
+
+Martínez-Álvaro M, Greenacre M, Blasco A. (2026). Omics data in relative values are almost subcompositionally coherent. Frontiers in Microbiology, 17, 1809364.
+
+https://doi.org/10.3389/fmicb.2026.1809364
+https://doi.org/10.3389/fmicb.2026.1809364
