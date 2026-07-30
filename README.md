@@ -140,10 +140,9 @@ PLEASE REPORT ANY BUGS OR DIFFICULTIES WITH THE PACKAGE TO Michael Greenacre at 
 
 **Bronze_script.R**: script for reproducing the workflow
 
-  \
-  **ARTICLE:** ***"Amalgamations in a hierarchy as a way of variable selection in compositional data analysis"***, by Michael Greenacre and Martin Graeve (2025). 
-
-**FattyAcids.txt**: dataset of fatty acid data
+\
+  **ARTICLE:** ***"The chiPower transformation: a valid alternative to logratio
+transformations in compositional data analysis"***, by Michael Greenacre (2024). 
 
  \
   **ARTICLE:** ***"Omics data in relative values are almost subcompositionally coherent"***, by Marina Martinez Alvaro, Michael Greenacre and Agustin Blasco (2026). 
@@ -154,7 +153,6 @@ PLEASE REPORT ANY BUGS OR DIFFICULTIES WITH THE PACKAGE TO Michael Greenacre at 
 
 **Rabbits_16S.txt**: subset of 16S data used in the paper, for testing 
 
-
  \
   **ARTICLE:** ***"Bi-dendrograms for clustering the categories of a multivariate categorical data set"***, by Michael Greenacre and Maurizio Vichi (2026). 
 
@@ -164,3 +162,7 @@ PLEASE REPORT ANY BUGS OR DIFFICULTIES WITH THE PACKAGE TO Michael Greenacre at 
 
 **simulated.txt**: artificial data set
 
+  \
+  **ARTICLE:** ***"Amalgamations in a hierarchy as a way of variable selection in compositional data analysis"***, by Michael Greenacre and Martin Graeve (2027). 
+
+**FattyAcids.txt**: dataset of fatty acid data
