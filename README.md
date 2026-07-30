@@ -146,11 +146,14 @@ PLEASE REPORT ANY BUGS OR DIFFICULTIES WITH THE PACKAGE TO Michael Greenacre at 
 **FattyAcids.txt**: dataset of fatty acid data
 
  \
-  **ARTICLE:** ***"Omics data are compositional but transformations are optional: the analysis in relative abundances permits zeros and it is almost subcompositionally coherent"***, by Marina Martinez Alvaro, Michael Greenacre and Agustin Blasco (2025). 
+  **ARTICLE:** ***"Omics data in relative values are almost subcompositionally coherent"***, by Marina Martinez Alvaro, Michael Greenacre and Agustin Blasco (2026). 
 
-**SUBCO.R**: functions CONCORD() and SUBCO() for measuring subcompositional coherence
+**unsuper_subco.R**: functions for measuring subcompositional coherence
 
-For **chiPower()** function, see **chiPower_miniscript.R**
+**README_unsuper_subco.Rmd**: explains the runctioning and results of function **unsuper_subco**
+
+**Rabbits_16S.txt**: subset of 16S data used in the paper, for testing 
+
 
  \
   **ARTICLE:** ***"Bi-dendrograms for clustering the categories of a multivariate categorical data set"***, by Michael Greenacre and Maurizio Vichi (2026). 
