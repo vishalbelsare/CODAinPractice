@@ -44,6 +44,11 @@ The package does include the data sets, but the data files are given here as wel
 
 PLEASE REPORT ANY BUGS OR DIFFICULTIES WITH THE PACKAGE TO Michael Greenacre at michael.greenacre@gmail.com
 
+
+## **COMPOSITIONAL DATA ANALYSIS IN PRACTICE (Second Edition, to be published in 2026)**
+
+Data and scripts coming soon
+
 -----------------------------------------------------------------------------------------------------------
 
 ## **R scripts and data sets from other publications**
@@ -144,7 +149,9 @@ PLEASE REPORT ANY BUGS OR DIFFICULTIES WITH THE PACKAGE TO Michael Greenacre at 
   **ARTICLE:** ***"The chiPower transformation: a valid alternative to logratio
 transformations in compositional data analysis"***, by Michael Greenacre (2024). 
 
-**chiPower.R**: fucntion for chiPower transformation
+**chiPower.R**: function for chiPower transformation
+
+**chiPower_miniscript.R**: script to illustrate use of chiPower function on the 'Crohn' data. Note that the version of the chiPower function used here is slightly anterior to the latest version in **chiPower.R**.
 
  \
   **ARTICLE:** ***"Omics data in relative values are almost subcompositionally coherent"***, by Marina Martinez Alvaro, Michael Greenacre and Agustin Blasco (2026). 
