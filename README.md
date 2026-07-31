@@ -144,12 +144,14 @@ PLEASE REPORT ANY BUGS OR DIFFICULTIES WITH THE PACKAGE TO Michael Greenacre at 
   **ARTICLE:** ***"The chiPower transformation: a valid alternative to logratio
 transformations in compositional data analysis"***, by Michael Greenacre (2024). 
 
+**chiPower.R**: fucntion for chiPower transformation
+
  \
   **ARTICLE:** ***"Omics data in relative values are almost subcompositionally coherent"***, by Marina Martinez Alvaro, Michael Greenacre and Agustin Blasco (2026). 
 
 **unsuper_subco.R**: functions for measuring subcompositional coherence
 
-**README_unsuper_subco.Rmd**: explains the runctioning and results of function **unsuper_subco**
+**README_unsuper_subco.Rmd**: explains the functioning and results of function **unsuper_subco**
 
 **Rabbits_16S.txt**: subset of 16S data used in the paper, for testing 
 
