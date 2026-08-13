@@ -171,6 +171,13 @@ transformations in compositional data analysis"***, by Michael Greenacre (2024).
 
 **simulated.txt**: artificial data set
 
+ \
+  **ARTICLE:** ***"The statistical analysis of complete compositional data"***, by Michael Greenacre and Ionas Erb (2026). 
+
+**Diary_data.txt**: text file of the 980 x 14 data matrix of 14 daily time activities
+
+**Fish_diet.txt**: dataset of fish diet: first three columns mass, sex and habitat, then 7 columns of diet percentages
+
   \
   **ARTICLE:** ***"Amalgamations in a hierarchy as a way of variable selection in compositional data analysis"***, by Michael Greenacre and Martin Graeve (2027). 
 
